@@ -113,6 +113,9 @@
 .ex__tf { flex: 0 0 auto; }
 
 /* —— 第一关：看图标注（牌外容器 + 引线）—— */
+/* 这一关内容较多，不强制撑满高度，避免底部被裁；超高则舞台滚动 */
+.ex--label { height: auto; }
+
 .label__wrap {
   position: relative;
   width: 100%;
@@ -150,7 +153,7 @@
   display: block;
   position: relative;
   z-index: 1; /* 在引线之下 */
-  height: clamp(240px, 44vh, 380px);
+  height: clamp(190px, 32vh, 340px);
   aspect-ratio: 1144 / 1958; /* 预留卡牌比例，加载前后形状一致，避免横竖跳变 */
   width: auto;
   object-fit: cover;
@@ -261,18 +264,26 @@
 
 .label__reveal {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 460px;
+  min-height: 52px; /* 预留高度，填对前后不跳动 */
+  margin-bottom: 10px;
+}
+.label__revhint {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink-soft);
 }
 .label__revrow {
   display: flex;
   flex-direction: column;
+  width: 100%;
   padding: 8px 14px;
   background: var(--green-soft);
   border-radius: 12px;
-  text-align: left;
+  text-align: center;
 }
 .label__revrow strong { font-family: var(--font-display); font-weight: 800; color: var(--green-text); font-size: 15px; }
 .label__revrow span { font-weight: 700; color: var(--ink); font-size: 15px; }

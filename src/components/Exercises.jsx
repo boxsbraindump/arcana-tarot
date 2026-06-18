@@ -225,8 +225,20 @@ function LabelExercise({ ex, onChange }) {
   const shownItem = shownPart ? items.find((i) => i.part === shownPart) : null
 
   return (
-    <div className="ex">
+    <div className="ex ex--label">
       <p className="ex__prompt">{allPlaced ? '全部找到了！✨' : '拖名字到位置，或点名字再点位置'}</p>
+
+      {/* 含义放在顶部，始终可见（点已填的容器可切换显示）*/}
+      <div className="label__reveal">
+        {shownItem ? (
+          <motion.div key={shownItem.part} className="label__revrow" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }}>
+            <strong>✓ {shownItem.part}</strong>
+            <span>{shownItem.meaning}</span>
+          </motion.div>
+        ) : (
+          <span className="label__revhint">填对后这里会显示它的含义</span>
+        )}
+      </div>
 
       <div className="label__wrap" ref={wrapRef}>
         <svg className="label__lines">
@@ -265,16 +277,6 @@ function LabelExercise({ ex, onChange }) {
           ))}
         </div>
       )}
-
-      {/* 含义：只显示最近一个（点已填的容器可再看）*/}
-      <div className="label__reveal">
-        {shownItem && (
-          <motion.div key={shownItem.part} className="label__revrow" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }}>
-            <strong>✓ {shownItem.part}</strong>
-            <span>{shownItem.meaning}</span>
-          </motion.div>
-        )}
-      </div>
 
       {/* 跟随指针的幽灵（始终在 DOM，拖拽时显示，用 ref 直接定位）*/}
       <div ref={ghostRef} className={`label__ghost ${dragging ? 'is-on' : ''}`}>{dragging || ''}</div>
