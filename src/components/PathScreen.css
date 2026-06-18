@@ -1,0 +1,174 @@
+.path {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 20px 18px 90px;
+}
+
+/* —— 顶部 —— */
+.path__head { margin-bottom: 26px; }
+
+.path__stats {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.pill {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 15px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid var(--line);
+  box-shadow: 0 2px 0 var(--line-deep);
+}
+.pill--heart { color: var(--red); }
+.pill--xp { color: var(--violet-deep); }
+.pill--done { color: var(--gold); }
+
+.path__hero {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 2px solid var(--line);
+  border-radius: 22px;
+  box-shadow: 0 4px 0 var(--line-deep);
+}
+.path__title {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--violet-deep);
+  line-height: 1;
+}
+.path__sub {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-top: 4px;
+}
+
+/* —— 单元 —— */
+.unit { margin-bottom: 18px; }
+.unit__banner {
+  text-align: center;
+  margin: 26px auto 30px;
+  padding: 14px 22px;
+  border-radius: 18px;
+  background: hsl(var(--hue), 75%, 55%);
+  border: none;
+  box-shadow: 0 5px 0 hsl(var(--hue), 70%, 42%);
+  max-width: 380px;
+}
+.unit__banner h2 { font-size: 20px; color: #fff; font-weight: 800; }
+.unit__banner p { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.85); }
+
+.unit__path {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+
+.node-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 圆形 3D 关卡泡泡 */
+.node {
+  position: relative;
+  width: 80px;
+  height: 74px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 34px;
+  transition: transform 0.08s;
+  background: var(--line);
+  box-shadow: 0 7px 0 var(--line-deep);
+}
+.node:active:not(:disabled) { transform: translateY(5px); box-shadow: 0 2px 0 var(--line-deep); }
+
+.node--current {
+  background: var(--green);
+  box-shadow: 0 7px 0 var(--green-deep);
+}
+.node--current:active { box-shadow: 0 2px 0 var(--green-deep); }
+
+.node--done {
+  background: var(--yellow);
+  box-shadow: 0 7px 0 #d6a700;
+  color: #fff;
+}
+.node--done:active { box-shadow: 0 2px 0 #d6a700; }
+.node--done .node__icon { font-weight: 900; color: #fff; }
+
+.node--locked {
+  background: #ededf2;
+  box-shadow: 0 7px 0 #dcdce4;
+  cursor: default;
+}
+.node--locked .node__icon { font-size: 26px; filter: grayscale(1); opacity: 0.5; }
+
+.node__pulse {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 3px solid var(--green);
+  opacity: 0.5;
+  animation: node-pulse 1.8s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes node-pulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+
+/* “开始” 气泡 */
+.node__bubble {
+  position: absolute;
+  top: -34px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--green-text);
+  background: #fff;
+  border: 2px solid var(--line);
+  padding: 5px 14px;
+  border-radius: 12px;
+  box-shadow: 0 2px 0 var(--line-deep);
+  animation: bob 1.6s ease-in-out infinite;
+  z-index: 2;
+}
+.node__bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 8px solid #fff;
+}
+
+.node__label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.path__foot { text-align: center; margin-top: 40px; }
+.path__foot p {
+  margin-top: 14px;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink-soft);
+}

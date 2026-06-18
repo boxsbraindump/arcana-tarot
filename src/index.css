@@ -1,0 +1,135 @@
+:root {
+  /* —— 多邻国式明亮调色板（塔罗紫色点缀）—— */
+  --bg: #ffffff;
+  --bg-soft: #f7f6fc;
+  --bg-blob-1: #efe6ff;
+  --bg-blob-2: #fff0e6;
+
+  --ink: #4b4b4b;
+  --ink-soft: #8a8a93;
+  --line: #e7e5ee;
+  --line-deep: #d6d3e0;
+
+  --green: #58cc02;
+  --green-deep: #4ba700;
+  --green-soft: #d7ffb8;
+  --green-text: #58a700;
+
+  --violet: #a35cf0;
+  --violet-deep: #8636d6;
+  --violet-soft: #f1e7ff;
+
+  --blue: #1cb0f6;
+  --blue-deep: #1597d6;
+  --blue-soft: #ddf4ff;
+
+  --red: #ff4b4b;
+  --red-deep: #e63a3a;
+  --red-soft: #ffe0e0;
+
+  --yellow: #ffc800;
+  --gold: #d9a83a;
+
+  --font-display: 'Baloo 2', system-ui, sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root { height: 100%; }
+
+body {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 50% 40% at 12% 8%, var(--bg-blob-1), transparent 70%),
+    radial-gradient(ellipse 45% 38% at 90% 18%, var(--bg-blob-2), transparent 70%),
+    radial-gradient(ellipse 55% 45% at 80% 100%, var(--violet-soft), transparent 70%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root { position: relative; z-index: 1; }
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 800; letter-spacing: 0; }
+
+::selection { background: var(--violet); color: #fff; }
+
+.app-shell {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 20px 64px;
+  min-height: 100vh;
+}
+
+/* 细分隔线（浅色） */
+.gold-rule {
+  height: 2px;
+  border-radius: 2px;
+  background: var(--line);
+}
+
+@keyframes float-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes pop-in {
+  0% { transform: scale(0.7); opacity: 0; }
+  70% { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* —— 通用：胖胖的 3D 按钮 —— */
+.btn {
+  width: 100%;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 15px;
+  border-radius: 16px;
+  transition: transform 0.06s, filter 0.15s, opacity 0.15s;
+}
+.btn:active:not(:disabled) { transform: translateY(4px); }
+
+.btn--primary {
+  color: #fff;
+  background: var(--green);
+  box-shadow: 0 5px 0 var(--green-deep);
+}
+.btn--primary:active:not(:disabled) { box-shadow: 0 1px 0 var(--green-deep); }
+.btn--primary:disabled {
+  color: #fff;
+  background: var(--line-deep);
+  box-shadow: 0 5px 0 #c2bed0;
+  cursor: default;
+  opacity: 0.9;
+}
+
+.btn--correct {
+  color: #fff;
+  background: var(--green);
+  box-shadow: 0 5px 0 var(--green-deep);
+}
+.btn--correct:active:not(:disabled) { transform: translateY(4px); box-shadow: 0 1px 0 var(--green-deep); }
+
+.btn--wrong {
+  color: #fff;
+  background: var(--red);
+  box-shadow: 0 5px 0 var(--red-deep);
+}
+.btn--wrong:active:not(:disabled) { transform: translateY(4px); box-shadow: 0 1px 0 var(--red-deep); }
