@@ -66,6 +66,16 @@
   overflow-y: auto;
 }
 
+/* 题目宿主：填满舞台高度，让题目内容据此自适应 */
+.player__exhost {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
 .player__footer {
   padding: 18px clamp(16px, 5vw, 40px) 28px;
   max-width: 760px;

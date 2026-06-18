@@ -99,10 +99,10 @@ export default function LessonPlayer({ lesson, onExit, onComplete }) {
       <main className="player__stage">
         <motion.div
           key={idx}
+          className="player__exhost"
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.25 }}
-          style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
         >
           <Exercise ex={ex} checked={checked} onChange={setAnswer} />
         </motion.div>
