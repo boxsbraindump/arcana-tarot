@@ -5,13 +5,16 @@
 //  course:       单元 → 关卡
 // ─────────────────────────────────────────────────────────────
 
+// 牌面图路径（兼容 GitHub Pages 子路径部署）
+const CARD = import.meta.env.BASE_URL + 'cards/'
+
 export const cards = {
   fool: {
     id: 'fool',
     name: '愚人',
     nameEn: 'The Fool',
     numeral: '0',
-    image: '/cards/fool.jpg',
+    image: CARD + 'fool.jpg',
     element: '风',
     keywords: ['新开始', '冒险', '信任', '天真'],
     intro:
@@ -54,7 +57,7 @@ export const cards = {
     name: '魔术师',
     nameEn: 'The Magician',
     numeral: 'I',
-    image: '/cards/magician.jpg',
+    image: CARD + 'magician.jpg',
     element: '水星',
     keywords: ['行动', '创造', '专注', '资源'],
     intro:
@@ -95,7 +98,7 @@ export const cards = {
     name: '女祭司',
     nameEn: 'The High Priestess',
     numeral: 'II',
-    image: '/cards/priestess.jpg',
+    image: CARD + 'priestess.jpg',
     element: '月亮',
     keywords: ['直觉', '潜意识', '神秘', '内省'],
     intro:
@@ -135,7 +138,7 @@ export const cards = {
     name: '皇后',
     nameEn: 'The Empress',
     numeral: 'III',
-    image: '/cards/empress.jpg',
+    image: CARD + 'empress.jpg',
     element: '金星',
     keywords: ['丰饶', '母性', '滋养', '感官'],
     intro:
