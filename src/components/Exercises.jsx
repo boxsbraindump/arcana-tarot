@@ -59,7 +59,6 @@ function Tracker({ parts, i }) {
 function TeachStep({ ex }) {
   return (
     <div className="ex">
-      {ex.track && <Tracker {...ex.track} />}
       <p className="ex__prompt">先认识一个符号</p>
       <CardVisual ex={ex} />
       <div className="teach__caption">{ex.name} · {ex.numeral}</div>
@@ -161,6 +160,7 @@ function LabelExercise({ ex, onChange }) {
   function onTileDown(e, name) {
     if (placedRef.current[name]) return
     e.preventDefault()
+    try { e.currentTarget.setPointerCapture(e.pointerId) } catch { /* noop */ }
     const start = { x: e.clientX, y: e.clientY, dragging: false }
     const move = (ev) => {
       if (!start.dragging && Math.hypot(ev.clientX - start.x, ev.clientY - start.y) > 6) {
@@ -501,7 +501,6 @@ function OptionExercise({ ex, checked, onChange }) {
 
   return (
     <div className="ex">
-      {ex.track && <Tracker {...ex.track} />}
       <p className="ex__prompt">{ex.prompt}</p>
       <CardVisual ex={ex} />
       {ex.part && <div className="ex__part">🔍 {ex.part}</div>}
